@@ -38,7 +38,7 @@ def cat_shock(face_landmark_points):
     ) / 2.0
 
     return (
-        eye_opening > 0.03
+        eye_opening > 0.04
     )
 
 
@@ -55,6 +55,7 @@ def cat_glare(face_landmark_points):
     ) / 2.0
 
     return eye_squint < 0.021
+
 
 
 def main():
@@ -82,6 +83,7 @@ def main():
             else:
                 cat_image = "assets/cat-disgust.jpeg"
         
+
             height, width = image.shape[:2]
             for lm in face_landmark_points.landmark:
                 x = int(lm.x * width)
