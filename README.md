@@ -81,34 +81,6 @@ squinting_threshold = 0.020  # softer glare
 
 ---
 
-## Contributing
-
-If you want to add new cat reactions, improve detection logic, or tweak thresholds, feel free to make a pull request.
-
-This project is intentionally lightweight and heuristic-based, so experimentation is encouraged.
-
-### How to contribute
-
-1. Fork the repository  
-2. Create a new branch
-   ```bash
-   git checkout -b feat/your-feature
-   ```
-   
-3. Make your changes
-   - Add new cat images to assets/
-   - Add or refine expression logic in main.py
-   - Adjust thresholds or improve stability
-     
-4. Commit your changes
-   ```bash
-   git commit -m "Add new cat reaction"
-   ```
-   
-5. Push your branch and open a pull request
-
----
-
 Have fun 🐱💻
 
 MIT License © 2026 Shana Nursoo  
