@@ -1,86 +1,142 @@
-MeowCV v2 😼
-Real-Time Facial Expression → Cat Reaction Engine
-A lightweight real-time facial expression engine built with OpenCV + MediaPipe that maps human expressions to viral TikTok cat reactions.
-Now with performance monitoring, instant exit controls, and cleaner internal logic.
+<div>
+  <h1>MeowCV 😼</h1>
+  <h3>Real-Time Facial Expression → Cat Reaction Engine</h3>
+</div>
 
-<img src="https://github.com/kaaaaash/MeowCV/blob/main/assets/cat-disgust.jpeg" width="340"> 
-________________________________________
-🧠 What’s New in v2
-•	✅ Improved threshold tuning
-•	✅ Real-time FPS counter
-•	✅ Instant quit controls (Q / ESC)
-•	✅ Cleaner expression priority logic
-•	✅ More stable MediaPipe version handling
-v2 focuses on usability, performance visibility, and cleaner engineering decisions.
-________________________________________
-⚙️ System Overview
-Pipeline:
-Webcam → FaceMesh → Landmark Extraction → Heuristic Engine → Cat Renderer
-Detection Logic
-Expressions are triggered using geometric relationships between landmarks:
-•	Shock → Eye vertical distance exceeds threshold
-•	Tongue → Mouth vertical distance exceeds threshold
-•	Glare → Eye vertical distance below squint threshold
-•	Idle → Default state
-No ML training required — purely rule-based detection.
-________________________________________
-🎮 Controls
-Key	Action
-Q	Quit program
-ESC	Quit program
-________________________________________
-📊 Performance Monitoring
-FPS is calculated per frame:
+<p>
+  A lightweight real-time computer vision system that maps human facial expressions 
+  to viral cat reactions using OpenCV + MediaPipe.
+</p>
+
+<p>
+  <img src="https://github.com/kaaaaash/MeowCV/blob/main/assets/cat-disgust.jpeg" width="380">
+</p>
+
+---
+
+## ✨ Overview
+
+MeowCV is a rule-based real-time facial expression engine that tracks 468 facial landmarks using MediaPipe FaceMesh and applies pure geometric heuristics to resolve expressions into dynamic cat reactions — no machine learning training required.
+
+Built for experimentation, performance benchmarking, and playful computer vision exploration.
+
+---
+
+## 🚀 Core Features
+
+- 🎯 Real-time MediaPipe FaceMesh tracking  
+- 🧠 Lightweight heuristic-based expression engine  
+- 🔄 Dynamic reaction switching  
+- 📊 Live FPS monitoring  
+- 🎮 Quick exit controls (`Q` / `ESC`)  
+- 🪟 Dual-window rendering (Camera + Reaction)
+
+---
+
+## ⚙️ Architecture
+
+| Stage | Component |
+|-------|------------|
+| 1 | Webcam Input |
+| 2 | MediaPipe FaceMesh |
+| 3 | Landmark Distance Engine |
+| 4 | Expression Resolver |
+| 5 | Cat Reaction Renderer |
+
+
+
+Pure geometric logic.  
+No deep learning model training.  
+No heavy inference pipeline.
+
+---
+
+## 🧪 Supported Expressions
+
+| Expression | Trigger Logic |
+|------------|--------------|
+| 😱 Shock   | Eye vertical distance increases |
+| 👅 Tongue  | Mouth vertical distance increases |
+| 😾 Glare   | Eye vertical distance decreases |
+| 🐱 Idle    | Default fallback state |
+
+---
+
+## 📊 Performance
+
+FPS is calculated per frame and rendered live:
+
+```python
 fps = 1 / (current_frame_time - prev_frame_time)
-Displayed in real time to:
-•	Measure efficiency
-•	Assist optimization
-•	Monitor system performance
-________________________________________
-🛠 Installation
+```
+
+Useful for evaluating performance under varying lighting conditions and hardware configurations.
+
+🛠 Setup
+----
 Python Version
-Use:
-Python 3.10 (recommended)
-⚠ Python 3.13+ not supported (MediaPipe compatibility).
-________________________________________
-Setup
+
+```
+Python 3.10 is required.
+Python 3.13+ is not supported due to MediaPipe compatibility constraints.
+```
+Installation
+----
+### 1. Clone the repository
+```
 git clone https://github.com/kaaaaash/MeowCV.git
 cd MeowCV
+```
 
-py -3.10 -m venv venv
-venv\Scripts\activate
 
-pip install mediapipe==0.10.9 opencv-python
-________________________________________
-Run
+### 2. Install dependencies
+Python **3.9 – 3.12** required (tested on Python 3.10). Python **3.13+** is not supported for `mediapipe==0.10.14`.
+```bash
+pip install -r requirements.txt
+```
+▶️ Run
+----
+```bash
 python main.py
-Camera launches.
-Expression tracking begins.
-Cats judge accordingly.
-________________________________________
-🎛 Configuration
-All sensitivity thresholds are adjustable in main.py.
+```
+
+<div align='center'><h3>
+Camera launches.<br>
+Expression tracking activates.<br>
+Cats respond instantly.
+</h3></div>
+
+---
+## 🎛 Configuration
+
+
+All sensitivity thresholds are configurable inside main.py:
+```
 eye_opening_threshold = 0.020
 mouth_open_threshold = 0.030
 squinting_threshold = 0.016
-Fine-tune detection responsiveness to match your lighting and camera quality.
-________________________________________
-🚀 Future Roadmap (v3 Ideas)
-•	Expression smoothing (reduce flicker)
-•	Animated overlays instead of static images
-•	Bounding box UI
-•	Web-based version (WebRTC)
-•	Modular expression engine (/core/expressions.py)
-•	Plugin-style cat packs
-________________________________________
-📜 License
-MIT License
-Copyright (c) 2026 Shana Nursoo
-Copyright (c) 2026 Aaroh Singh
-________________________________________
-💡 Philosophy
-MeowCV v2 proves that expressive CV systems don’t need heavy ML pipelines.
-Simple geometry + clean logic + performance awareness = responsive systems.
-And also…
-cats reacting to your face is elite software design.
+```
 
+Adjust values based on lighting conditions and camera quality.
+
+## 🔮 Roadmap
+
+- Expression smoothing<br>
+- Animated reaction overlays<br>
+- Modular engine structure<br>
+- Web-based version (WebRTC)<br>
+- Plugin-style reaction packs<br>
+
+## 📜 License
+
+MIT License
+
+Copyright (c) 2026 Shana Nursoo<br>
+Copyright (c) 2026 Aaroh Seth
+
+<div align="center">
+  <sub>
+    Nothing here is broken.<br>
+    That’s the problem.
+  </sub>
+</div>
