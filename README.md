@@ -2,6 +2,7 @@ MeowCV v2 😼
 Real-Time Facial Expression → Cat Reaction Engine
 A lightweight real-time facial expression engine built with OpenCV + MediaPipe that maps human expressions to viral TikTok cat reactions.
 Now with performance monitoring, instant exit controls, and cleaner internal logic.
+
 <img src="https://github.com/kaaaaash/MeowCV/blob/main/assets/cat-disgust.jpeg" width="340"> 
 ________________________________________
 🧠 What’s New in v2
