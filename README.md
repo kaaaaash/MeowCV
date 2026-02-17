@@ -1,86 +1,127 @@
-# MeowCV
+MeowCV v2 😼
+Real-Time Facial Expression → Cat Reaction Engine
 
-An openCV + mediapipe program that detects facial expressions and displays goated Tiktok cats like Rigby and Larry
+A lightweight real-time facial expression engine built with OpenCV + MediaPipe that maps human expressions to viral TikTok cat reactions.
 
-<img src="https://github.com/reinesana/MeowCV/blob/main/assets/cat-disgust.jpeg" width="300">
+Now with performance monitoring, instant exit controls, and cleaner internal logic.
 
----
+<img src="https://github.com/kaaaaash/MeowCV/blob/main/assets/cat-disgust.jpeg" width="340">
+🧠 What’s New in v2
 
-## Introduction
+✅ Improved threshold tuning
 
-**MeowCV** is a CV program that maps human facial expressions to popular cat reactions on Tiktok in real time.
+✅ Real-time FPS counter
 
-Using your webcam and the mediapipe library, the system tracks key facial landmarks and displays a corresponding cat image when it detects expressions. Each cat is triggered using lightweight rules based on landmark movement like:
-1. Shock → mouth opens wide
-2. Tongue → mouth open without triggering shock
-3. Glare → eye squint
+✅ Instant quit controls (Q / ESC)
 
-**Note**: This program is designed to be fun and easy to extend — perfect for experimenting with facial heuristics and expression detection.
+✅ Cleaner expression priority logic
 
----
+✅ More stable MediaPipe version handling
 
-## How it works
+v2 focuses on usability, performance visibility, and cleaner engineering decisions.
 
-1. Your webcam feed is processed in real time using mediapipe face mesh
-2. Facial landmarks are extracted (mouth, eyes, nose, etc.)
-3. Simple geometric heuristics determine which expression is active
-4. A matching Tiktok cat reaction is displayed in a separate window
+⚙️ System Overview
 
----
+Pipeline:
 
-## Installation
+Webcam → FaceMesh → Landmark Extraction → Heuristic Engine → Cat Renderer
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/reinesana/MeowCV.git
-```
+Detection Logic
 
-### 2. Install dependencies
-Python **3.9 – 3.12** required (tested on Python 3.11.7). Python **3.13+** is not supported for `mediapipe==0.10.14`.
-```bash
-pip install -r requirements.txt
-```
+Expressions are triggered using geometric relationships between landmarks:
 
-### 3. Run the program
-```bash
+Shock → Eye vertical distance exceeds threshold
+
+Tongue → Mouth vertical distance exceeds threshold
+
+Glare → Eye vertical distance below squint threshold
+
+Idle → Default state
+
+No ML training required — purely rule-based detection.
+
+🎮 Controls
+Key	Action
+Q	Quit program
+ESC	Quit program
+📊 Performance Monitoring
+
+FPS is calculated per frame:
+
+fps = 1 / (current_frame_time - prev_frame_time)
+
+
+Displayed in real time to:
+
+Measure efficiency
+
+Assist optimization
+
+Monitor system performance
+
+🛠 Installation
+Python Version
+
+Use:
+
+Python 3.10 (recommended)
+
+
+⚠ Python 3.13+ not supported (MediaPipe compatibility).
+
+Setup
+git clone https://github.com/kaaaaash/MeowCV.git
+cd MeowCV
+
+py -3.10 -m venv venv
+venv\Scripts\activate
+
+pip install mediapipe==0.10.9 opencv-python
+
+Run
 python main.py
-```
 
----
 
-## Configuration
+Camera launches.
+Expression tracking begins.
+Cats judge accordingly.
 
-You can customize how the system behaves by editing the configuration values in `main.py`.
+🎛 Configuration
 
-### eye_opening_threshold — Shock Detection
-Measures the vertical distance between the upper and lower eyelids for both eyes and triggers the shocked cat.
-- Increase this value → shock triggers only when eyes are very wide
-- Decrease this value → shock triggers more easily
-```python
-eye_opening_threshold = 0.026  # very exaggerated shock
-eye_opening_threshold = 0.020  # subtle eye widening
-```
+All sensitivity thresholds are adjustable in main.py.
 
-### mouth_open_threshold — Tongue Detection
-Measures the vertical distance between the upper and lower lips and triggers only when the mouth opens in a narrow “tongue-out” shape.
-- Increase this value → tongue must come out more to trigger
-- Decrease this value → slight mouth opening may trigger tongue
-```python
-mouth_open_threshold = 0.045  # tongue must be very visible
-mouth_open_threshold = 0.030  # easier tongue trigger
-```
+eye_opening_threshold = 0.020
+mouth_open_threshold = 0.030
+squinting_threshold = 0.016
 
-### squinting_threshold — Glare Detection
-Measures how close the upper and lower eyelids are and controls when the side-eye cat is triggered.
-- Lower this value → glare triggers only on strong squints
-- Higher this value → glare triggers more easily
-```python
-squinting_threshold = 0.016  # very strict glare
-squinting_threshold = 0.020  # softer glare
-```
 
----
+Fine-tune detection responsiveness to match your lighting and camera quality.
 
-Have fun 🐱💻
+🚀 Future Roadmap (v3 Ideas)
 
-MIT License © 2026 Shana Nursoo  
+Expression smoothing (reduce flicker)
+
+Animated overlays instead of static images
+
+Bounding box UI
+
+Web-based version (WebRTC)
+
+Modular expression engine (/core/expressions.py)
+
+Plugin-style cat packs
+
+📜 License
+
+MIT License
+
+Copyright (c) 2026 Shana Nursoo
+Copyright (c) 2026 Aaroh Singh
+
+💡 Philosophy
+
+MeowCV v2 proves that expressive CV systems don’t need heavy ML pipelines.
+Simple geometry + clean logic + performance awareness = responsive systems.
+
+And also…
+cats reacting to your face is elite software design.

@@ -9,12 +9,17 @@ A openCV program that detects faces and displays Tiktok cats.
 import cv2
 import mediapipe as mp
 import os
+import time
 
 
-face_mesh = mp.solutions.face_mesh.FaceMesh(
+
+mp_face_mesh = mp.solutions.face_mesh
+face_mesh = mp_face_mesh.FaceMesh(
+    static_image_mode=False,
+    max_num_faces=1,
+    refine_landmarks=True,
     min_detection_confidence=0.5,
-    min_tracking_confidence=0.5,
-    max_num_faces=1
+    min_tracking_confidence=0.5
 )
 
 cam = cv2.VideoCapture(0)
@@ -59,6 +64,7 @@ def cat_glare(face_landmark_points):
 
 
 def main():
+    prev_frame_time = 0
     while True:
         ret, image = cam.read()
         if not ret:
@@ -89,7 +95,14 @@ def main():
                 x = int(lm.x * width)
                 y = int(lm.y * height)
                 cv2.circle(image, (x, y), 1, (0, 100, 0), -1)
-            
+        
+        # Calculate and display FPS
+        current_frame_time = time.time()
+        fps = 1 / (current_frame_time - prev_frame_time) if (current_frame_time - prev_frame_time) > 0 else 0
+        prev_frame_time = current_frame_time
+        
+        cv2.putText(image, f"FPS: {fps:.2f}", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         
         cv2.imshow('Face Detection', image)
 
@@ -106,7 +119,7 @@ def main():
 
 
         key = cv2.waitKey(1)
-        if key == 27:
+        if key == 27 or key == ord('q'):
             break
 
 
